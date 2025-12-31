@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Jewellery Online Store</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="home2.html">Home 2</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Account <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                            <li><a href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="feather-menu"></i>
+                </button>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs removed -->
+
+    <section class="section contact-section" style="padding-top: calc(var(--navbar-height) + 2rem)">
+        <div class="container">
+            <h1 class="page-title" data-aos="fade-up">Contact Us</h1>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">We'd love to hear from you. Get in touch
+                with us.</p>
+
+            <div class="contact-layout">
+                <div class="contact-form-section" data-aos="fade-right">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section" data-aos="fade-left">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="feather-map-pin"></i>
+                            </div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>123 Luxury Street<br>New York, NY 10001<br>United States</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="feather-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+1 (555) 123-4567<br>+1 (555) 123-4568</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="feather-mail"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@jewellerystore.com<br>support@jewellerystore.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="feather-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.184132576644!2d-73.99630868459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building%2C%20350%205th%20Ave%2C%20New%20York%2C%20NY%2010001%2C%20USA!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
+                            width="100%" height="450" style="border:0; display: block;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Store Location">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="support-cards">
+                <div class="support-card" data-aos="fade-up">
+                    <i class="feather-headphones"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is available around the clock to assist you.</p>
+                </div>
+                <div class="support-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="feather-shield"></i>
+                    <h3>Secure Shopping</h3>
+                    <p>Your personal information and transactions are protected with industry-leading security.</p>
+                </div>
+                <div class="support-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="feather-truck"></i>
+                    <h3>Fast Delivery</h3>
+                    <p>We offer express shipping options to get your order to you as quickly as possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Breadcrumbs removed
+
+            document.getElementById('contactForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                Toast.show('Thank you for your message! We will get back to you soon.', 'success');
+                e.target.reset();
+            });
+        });
+    </script>
+    <style>
+        .contact-section .page-title,
+        .contact-section .page-subtitle {
+            text-align: center;
+        }
+
+        .contact-form-section h2,
+        .contact-info-section h2 {
+            text-align: center;
+        }
+
+        /* Base styles for contact layout */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            max-width: 100%;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            display: block;
+        }
+
+        .support-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .support-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-form-section .btn-primary {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Base styles for contact layout */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            max-width: 100%;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            display: block;
+        }
+
+        .support-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .support-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        #contactForm {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+        }
+
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea {
+            background: var(--dark-bg);
+        }
+
+        .support-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        [data-theme="dark"] .support-card {
+            background: var(--dark-bg);
+        }
+
+        @media (max-width: 968px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem !important;
+            }
+        }
+
+        /* Mobile View - Enhanced Design */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding-top: 1rem !important;
+            }
+
+            .contact-section .page-title {
+                font-size: 2rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .contact-section .page-subtitle {
+                font-size: 0.95rem !important;
+                margin-bottom: 2rem !important;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr !important;
+                gap: 2.5rem !important;
+                margin-top: 2rem !important;
+            }
+
+            .contact-form-section,
+            .contact-info-section {
+                width: 100% !important;
+            }
+
+            .contact-form-section h2,
+            .contact-info-section h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Form improvements */
+            .form-group {
+                margin-bottom: 1.25rem !important;
+            }
+
+            .form-group label {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.875rem !important;
+                font-size: 1rem !important;
+                border-radius: var(--radius-md) !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .form-group textarea {
+                min-height: 120px !important;
+                resize: vertical !important;
+            }
+
+            .contact-form-section .btn-primary {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 1rem !important;
+                font-size: 1rem !important;
+                margin-top: 0.5rem !important;
+            }
+
+            /* Contact info improvements */
+            .contact-info {
+                margin-top: 1.5rem !important;
+            }
+
+            .info-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+                margin-bottom: 2rem !important;
+                padding: 1.25rem !important;
+                background: var(--bg-light) !important;
+                border-radius: var(--radius-lg) !important;
+            }
+
+            [data-theme="dark"] .info-item {
+                background: rgba(255, 255, 255, 0.05) !important;
+            }
+
+            .info-icon {
+                width: 50px !important;
+                height: 50px !important;
+                flex-shrink: 0 !important;
+            }
+
+            .info-item h3 {
+                font-size: 1.125rem !important;
+                margin-bottom: 0.5rem !important;
+                color: var(--text-primary) !important;
+            }
+
+            .info-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                color: var(--text-secondary) !important;
+                margin: 0 !important;
+            }
+
+            /* Map improvements */
+            .map-container {
+                margin-top: 1.5rem !important;
+                border-radius: var(--radius-lg) !important;
+                overflow: hidden !important;
+            }
+
+            .map-container iframe {
+                width: 100% !important;
+                height: 300px !important;
+                border: 0 !important;
+            }
+
+            /* Support cards improvements */
+            .support-cards {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                margin-top: 3rem !important;
+            }
+
+            .support-card {
+                padding: 1.5rem !important;
+                border-radius: var(--radius-lg) !important;
+            }
+
+            .support-card i {
+                font-size: 2rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .support-card h3 {
+                font-size: 1.125rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .support-card p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+        }
+
+        /* Small Mobile (425px and below) */
+        @media (max-width: 425px) {
+            .contact-section .page-title {
+                font-size: 1.75rem !important;
+            }
+
+            .contact-section .page-subtitle {
+                font-size: 0.9rem !important;
+            }
+
+            .contact-form-section h2,
+            .contact-info-section h2 {
+                font-size: 1.25rem !important;
+            }
+
+            .info-item {
+                padding: 1rem !important;
+            }
+
+            .info-icon {
+                width: 45px !important;
+                height: 45px !important;
+            }
+
+            .support-card {
+                padding: 1.25rem !important;
+            }
+        }
+    </style>
+</body>
+
+</html>

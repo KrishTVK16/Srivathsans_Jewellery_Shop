@@ -306,11 +306,22 @@
             border-radius: var(--radius-lg);
             text-align: center;
             box-shadow: var(--shadow-sm);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
         }
 
         [data-theme="dark"] .feature-card,
         [data-theme="dark"] .material-card {
             background: var(--dark-bg);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover,
+        .material-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+            border-width: 2px;
         }
 
         .timeline {
@@ -336,6 +347,24 @@
 
         .team-member {
             text-align: center;
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .team-member {
+            background: var(--dark-bg);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .team-member:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+            border-width: 2px;
         }
 
         .team-image {

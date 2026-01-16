@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read our latest blog posts about jewellery trends, care tips, and more.">
+    <meta name="keywords" content="jewellery, jewelry, blog, trends, care tips">
     <title>Blog Post - Jewellery Online Store</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,8 +29,14 @@
             <div class="navbar-content">
                 <div class="navbar-brand">
                     <a href="index.html">
-                        <span class="brand-text">JEWELLERY</span>
-                        <span class="brand-tagline">Timeless Elegance</span>
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
                     </a>
                 </div>
                 <ul class="navbar-menu" id="navbarMenu">
@@ -53,13 +66,20 @@
                     </li>
                 </ul>
                 <div class="navbar-actions">
-                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon"
-                            data-feather="moon"></i></button>
-                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart"
-                            data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
-                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="feather-heart"
-                            data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <i class="feather-menu" data-feather="menu"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -89,9 +109,16 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -104,11 +131,13 @@
                 1: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=1200&h=600&fit=crop',
                 2: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=1200&h=600&fit=crop',
                 3: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1200&h=600&fit=crop',
-                4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop'
+                4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop',
+                6: 'https://images.unsplash.com/photo-1728381019685-2332018a8a24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fERpYW1vbmQlMjBCYW5nbGV8ZW58MHx8MHx8fDA%3D',
+                7: 'https://images.unsplash.com/photo-1675105151596-f2391ab706c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8VmludGFnZSUyMFN0eWxlJTIwaGFuZCUyMFJpbmd8ZW58MHx8MHx8fDA%3D'
             };
             const article = document.getElementById('blogArticle');
             article.innerHTML = `
-                <div class="blog-featured-image" style="aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 2rem; overflow: hidden;">
+                <div class="blog-featured-image" style="max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 2rem; overflow: hidden;">
                     <img src="${blogImages[post.id] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop'}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="blog-meta" style="display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem; color: var(--text-light);">
@@ -151,7 +180,9 @@
                     1: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop',
                     2: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=400&fit=crop',
                     3: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop',
-                    4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'
+                    4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
+                    6: 'https://images.unsplash.com/photo-1728381019685-2332018a8a24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fERpYW1vbmQlMjBCYW5nbGV8ZW58MHx8MHx8fDA%3D',
+                    7: 'https://images.unsplash.com/photo-1675105151596-f2391ab706c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8VmludGFnZSUyMFN0eWxlJTIwaGFuZCUyMFJpbmd8ZW58MHx8MHx8fDA%3D'
                 };
                 card.innerHTML = `
                     <div class="blog-card-image" style="aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 1rem; overflow: hidden;">
@@ -178,15 +209,19 @@
             padding: var(--spacing-md);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
+            border: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         [data-theme="dark"] .blog-card {
             background: var(--dark-bg);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+            border-width: 2px;
         }
 
         @media (max-width: 768px) {

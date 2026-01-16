@@ -200,11 +200,12 @@
     border-radius: var(--radius-lg);
     padding: var(--spacing-md);
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    border: 2px solid rgba(212, 175, 55, 0.3);
 }
 
 [data-theme="dark"] .summary-card {
     background: var(--dark-bg);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .summary-card h3 {
@@ -235,6 +236,42 @@
     margin-top: var(--spacing-md);
     padding-top: var(--spacing-md);
     border-top: 1px solid var(--border-color);
+}
+
+.cart-cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.cart-cta-buttons .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.cart-cta-buttons .btn-outline {
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    color: var(--text-primary);
+    background: var(--white);
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .cart-cta-buttons .btn-outline {
+    background: var(--dark-bg);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.cart-cta-buttons .btn-outline:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .coupon-section input {
@@ -297,18 +334,10 @@
         min-width: auto !important;
     }
     
-    /* Proceed to Checkout button - fit text size and center in tablet */
-    .summary-card button.btn-primary.btn-lg,
-    .summary-card button[onclick="proceedToCheckout()"],
-    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
-    .cart-summary button.btn-primary.btn-lg {
-        width: auto !important;
-        max-width: none !important;
-        padding: 0.75rem 1.25rem !important;
-        font-size: 0.9rem !important;
+    /* Cart CTA buttons - ensure proper alignment */
+    .cart-cta-buttons .btn {
+        width: 100% !important;
         display: block !important;
-        margin: 1rem auto 0 auto !important;
-        min-width: auto !important;
     }
 }
 
@@ -334,18 +363,10 @@
         min-width: auto !important;
     }
     
-    /* Proceed to Checkout button - fit text size and center - override inline style */
-    .summary-card button.btn-primary.btn-lg,
-    .summary-card button[onclick="proceedToCheckout()"],
-    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
-    .cart-summary .summary-card button.btn-primary.btn-lg {
-        width: auto !important;
-        max-width: none !important;
-        padding: 0.75rem 1.25rem !important;
-        font-size: 0.9rem !important;
+    /* Cart CTA buttons - ensure proper alignment */
+    .cart-cta-buttons .btn {
+        width: 100% !important;
         display: block !important;
-        margin: 1rem auto 0 auto !important;
-        min-width: auto !important;
     }
 }
 
@@ -384,18 +405,10 @@
         min-width: auto !important;
     }
     
-    /* Proceed to Checkout button - fit text size and center in mobile */
-    .summary-card button.btn-primary.btn-lg,
-    .summary-card button[onclick="proceedToCheckout()"],
-    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
-    .cart-summary .summary-card button.btn-primary.btn-lg {
-        width: auto !important;
-        max-width: none !important;
-        padding: 0.75rem 1.25rem !important;
-        font-size: 0.9rem !important;
+    /* Cart CTA buttons - ensure proper alignment */
+    .cart-cta-buttons .btn {
+        width: 100% !important;
         display: block !important;
-        margin: 1rem auto 0 auto !important;
-        min-width: auto !important;
     }
     
     .cart-item {
@@ -440,18 +453,10 @@
         min-width: auto !important;
     }
     
-    /* Proceed to Checkout button - fit text size and center in mobile */
-    .summary-card button.btn-primary.btn-lg,
-    .summary-card button[onclick="proceedToCheckout()"],
-    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
-    .cart-summary button.btn-primary.btn-lg {
-        width: auto !important;
-        max-width: none !important;
-        padding: 0.75rem 1.25rem !important;
-        font-size: 0.9rem !important;
+    /* Cart CTA buttons - ensure proper alignment */
+    .cart-cta-buttons .btn {
+        width: 100% !important;
         display: block !important;
-        margin: 1rem auto 0 auto !important;
-        min-width: auto !important;
     }
 }
 

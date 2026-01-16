@@ -24,11 +24,11 @@ function initUserDashboard() {
             e.preventDefault();
             const tab = item.getAttribute('data-tab');
             switchTab(tab);
-            
+
             // Update active state
             menuItems.forEach(mi => mi.classList.remove('active'));
             item.classList.add('active');
-            
+
             // Close sidebar on mobile after selecting menu item
             if (window.innerWidth <= 768) {
                 const sidebar = document.getElementById('accountSidebar');
@@ -43,12 +43,12 @@ function initUserDashboard() {
             }
         });
     });
-    
+
     // Mobile menu toggle
     const menuToggle = document.getElementById('accountMenuToggle');
     const sidebar = document.getElementById('accountSidebar');
     const sidebarClose = document.getElementById('accountSidebarClose');
-    
+
     // Create overlay if it doesn't exist
     let overlay = document.querySelector('.account-sidebar-overlay');
     if (!overlay) {
@@ -56,7 +56,7 @@ function initUserDashboard() {
         overlay.className = 'account-sidebar-overlay';
         document.body.appendChild(overlay);
     }
-    
+
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
@@ -74,7 +74,7 @@ function initUserDashboard() {
             }
         });
     }
-    
+
     if (sidebarClose && sidebar) {
         sidebarClose.addEventListener('click', () => {
             sidebar.classList.remove('active');
@@ -88,7 +88,7 @@ function initUserDashboard() {
             }
         });
     }
-    
+
     if (overlay && sidebar) {
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');
@@ -96,7 +96,7 @@ function initUserDashboard() {
             document.body.style.overflow = '';
         });
     }
-    
+
     // Close sidebar on window resize
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -121,11 +121,11 @@ function initAdminDashboard() {
             e.preventDefault();
             const tab = item.getAttribute('href').substring(1);
             switchAdminTab(tab);
-            
+
             // Update active state
             menuItems.forEach(mi => mi.classList.remove('active'));
             item.classList.add('active');
-            
+
             // Close sidebar on mobile after selecting menu item
             if (window.innerWidth <= 768) {
                 const sidebar = document.getElementById('adminSidebar');
@@ -140,12 +140,12 @@ function initAdminDashboard() {
             }
         });
     });
-    
+
     // Mobile menu toggle
     const menuToggle = document.getElementById('adminMenuToggle');
     const sidebar = document.getElementById('adminSidebar');
     const sidebarClose = document.getElementById('adminSidebarClose');
-    
+
     // Create overlay if it doesn't exist
     let overlay = document.querySelector('.admin-sidebar-overlay');
     if (!overlay) {
@@ -153,7 +153,7 @@ function initAdminDashboard() {
         overlay.className = 'admin-sidebar-overlay';
         document.body.appendChild(overlay);
     }
-    
+
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
@@ -171,7 +171,7 @@ function initAdminDashboard() {
             }
         });
     }
-    
+
     if (sidebarClose && sidebar) {
         sidebarClose.addEventListener('click', () => {
             sidebar.classList.remove('active');
@@ -185,7 +185,7 @@ function initAdminDashboard() {
             }
         });
     }
-    
+
     if (overlay && sidebar) {
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');
@@ -193,7 +193,7 @@ function initAdminDashboard() {
             document.body.style.overflow = '';
         });
     }
-    
+
     // Close sidebar on window resize
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -237,10 +237,17 @@ function initTabSwitching() {
         const targetTab = document.getElementById(tabName);
         if (targetTab) {
             targetTab.classList.add('active');
+
+            // Load orders when orders tab is opened
+            if (tabName === 'orders' && typeof loadUserOrders === 'function') {
+                setTimeout(() => {
+                    loadUserOrders();
+                }, 100);
+            }
         }
     }
     window.switchTab = switchTab;
-    
+
     // Admin dashboard tabs
     function switchAdminTab(tabName) {
         const adminTabs = document.querySelectorAll('.admin-tab');
@@ -250,7 +257,7 @@ function initTabSwitching() {
         const targetTab = document.getElementById(tabName);
         if (targetTab) {
             targetTab.classList.add('active');
-            
+
             // Initialize charts when switching to analytics tab
             if (tabName === 'analytics') {
                 setTimeout(() => {
@@ -269,7 +276,12 @@ const sampleOrders = [
         customer: 'John Doe',
         customerEmail: 'john.doe@example.com',
         products: [
-            { name: 'Elegant Gold Chain Necklace', quantity: 1, price: 1299.99 }
+            {
+                name: 'Elegant Gold Chain Necklace',
+                quantity: 1,
+                price: 1299.99,
+                image: 'https://images.unsplash.com/photo-1758995115518-26f90aa61b97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmVja2xhY2UlMjBqZXdlbHJ5JTIwYWVzdGhldGljfGVufDB8fDB8fHww'
+            }
         ],
         total: 1299.99,
         status: 'processing',
@@ -281,8 +293,18 @@ const sampleOrders = [
         customer: 'Sarah Johnson',
         customerEmail: 'sarah.j@example.com',
         products: [
-            { name: 'Diamond Stud Earrings', quantity: 1, price: 899.99 },
-            { name: 'Rose Gold Choker', quantity: 1, price: 699.99 }
+            {
+                name: 'Diamond Stud Earrings',
+                quantity: 1,
+                price: 899.99,
+                image: 'https://media.istockphoto.com/id/508118945/photo/gold-stud-diamond-earrings.webp?a=1&b=1&s=612x612&w=0&k=20&c=r50mwGfkQnQcIb8gN2E0jMlUbHw6Ayipr-UN2StdR_o='
+            },
+            {
+                name: 'Rose Gold Choker',
+                quantity: 1,
+                price: 699.99,
+                image: 'https://images.unsplash.com/photo-1721807644923-df3186074d89?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFJvc2UlMjBHb2xkJTIwQ2hva2VyJTIwTmVja2xhY2V8ZW58MHx8MHx8fDA%3D'
+            }
         ],
         total: 1599.98,
         status: 'delivered',
@@ -294,7 +316,12 @@ const sampleOrders = [
         customer: 'Michael Chen',
         customerEmail: 'michael.c@example.com',
         products: [
-            { name: 'Platinum Wedding Ring', quantity: 1, price: 1999.99 }
+            {
+                name: 'Platinum Wedding Ring',
+                quantity: 1,
+                price: 1999.99,
+                image: 'https://media.istockphoto.com/id/1216928531/photo/pair-of-silver-wedding-rings-isolated-on-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=71FbDv2pd485enX3Yly14Yi8ntvM3m2fDcaM089uEaw='
+            }
         ],
         total: 1999.99,
         status: 'pending',
@@ -306,8 +333,18 @@ const sampleOrders = [
         customer: 'Emily Davis',
         customerEmail: 'emily.d@example.com',
         products: [
-            { name: 'Pearl Strand Necklace', quantity: 1, price: 899.99 },
-            { name: 'Diamond Pendant Necklace', quantity: 1, price: 2499.99 }
+            {
+                name: 'Pearl Strand Necklace',
+                quantity: 1,
+                price: 899.99,
+                image: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=800&fit=crop&auto=format&q=80'
+            },
+            {
+                name: 'Diamond Pendant Necklace',
+                quantity: 1,
+                price: 2499.99,
+                image: 'https://images.unsplash.com/photo-1708220084863-5c249297dd64?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fERpYW1vbmQlMjBQZW5kYW50JTIwTmVja2xhY2V8ZW58MHx8MHx8fDA%3D'
+            }
         ],
         total: 3399.98,
         status: 'delivered',
@@ -319,10 +356,15 @@ const sampleOrders = [
         customer: 'Robert Wilson',
         customerEmail: 'robert.w@example.com',
         products: [
-            { name: 'Gold Tennis Bracelet', quantity: 1, price: 1499.99 }
+            {
+                name: 'Gold Tennis Bracelet',
+                quantity: 1,
+                price: 1499.99,
+                image: 'https://images.unsplash.com/photo-1767921777873-81818b812a4d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8VGVubmlzJTIwQnJhY2VsZXR8ZW58MHx8MHx8fDA%3D'
+            }
         ],
         total: 1499.99,
-        status: 'processing',
+        status: 'cancelled',
         date: '2024-03-20',
         paymentMethod: 'Debit Card'
     },
@@ -331,7 +373,12 @@ const sampleOrders = [
         customer: 'Lisa Anderson',
         customerEmail: 'lisa.a@example.com',
         products: [
-            { name: 'Silver Hoop Earrings', quantity: 2, price: 299.99 }
+            {
+                name: 'Silver Hoop Earrings',
+                quantity: 2,
+                price: 299.99,
+                image: 'https://media.istockphoto.com/id/1474786177/photo/elegant-jewelry-set-jewellery-set-with-gemstones-jewelry-accessories-collage-product-still.jpg?s=612x612&w=0&k=20&c=KnFFzwVKdgxOCO2OSN09SPDRg63OgnkbWySMu_nv8kk='
+            }
         ],
         total: 599.98,
         status: 'cancelled',
@@ -343,7 +390,12 @@ const sampleOrders = [
         customer: 'David Brown',
         customerEmail: 'david.b@example.com',
         products: [
-            { name: 'Diamond Engagement Ring', quantity: 1, price: 3499.99 }
+            {
+                name: 'Diamond Engagement Ring',
+                quantity: 1,
+                price: 3499.99,
+                image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&auto=format&q=80'
+            }
         ],
         total: 3499.99,
         status: 'delivered',
@@ -355,8 +407,18 @@ const sampleOrders = [
         customer: 'Jennifer Martinez',
         customerEmail: 'jennifer.m@example.com',
         products: [
-            { name: 'Rose Gold Choker', quantity: 1, price: 699.99 },
-            { name: 'Diamond Stud Earrings', quantity: 1, price: 899.99 }
+            {
+                name: 'Rose Gold Choker',
+                quantity: 1,
+                price: 699.99,
+                image: 'https://images.unsplash.com/photo-1721807644923-df3186074d89?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFJvc2UlMjBHb2xkJTIwQ2hva2VyJTIwTmVja2xhY2V8ZW58MHx8MHx8fDA%3D'
+            },
+            {
+                name: 'Diamond Stud Earrings',
+                quantity: 1,
+                price: 899.99,
+                image: 'https://media.istockphoto.com/id/508118945/photo/gold-stud-diamond-earrings.webp?a=1&b=1&s=612x612&w=0&k=20&c=r50mwGfkQnQcIb8gN2E0jMlUbHw6Ayipr-UN2StdR_o='
+            }
         ],
         total: 1599.98,
         status: 'pending',
@@ -376,12 +438,12 @@ function loadAdminOrders() {
             const statusClass = order.status;
             const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
             const mainProduct = order.products[0];
-            const date = new Date(order.date).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric' 
+            const date = new Date(order.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
             });
-            
+
             return `
                 <tr>
                     <td><strong>${order.id}</strong></td>
@@ -418,22 +480,22 @@ function loadAdminOrders() {
             `;
         }).join('');
     }
-    
+
     // Load all orders in orders tab
     const ordersTable = document.getElementById('ordersTable');
     if (ordersTable) {
         ordersTable.innerHTML = sampleOrders.map(order => {
             const statusClass = order.status;
             const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
-            const productsText = order.products.length === 1 
-                ? order.products[0].name 
+            const productsText = order.products.length === 1
+                ? order.products[0].name
                 : `${order.products[0].name} + ${order.products.length - 1} more`;
-            const date = new Date(order.date).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric' 
+            const date = new Date(order.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
             });
-            
+
             return `
                 <tr>
                     <td><strong>${order.id}</strong></td>
@@ -465,7 +527,7 @@ function loadAdminOrders() {
             `;
         }).join('');
     }
-    
+
     // Re-initialize Feather Icons
     if (typeof feather !== 'undefined') {
         feather.replace();
@@ -479,11 +541,11 @@ function viewOrder(orderId) {
         Toast.show('Order not found', 'error');
         return;
     }
-    
-    const productsList = order.products.map(p => 
+
+    const productsList = order.products.map(p =>
         `<li>${p.name} x${p.quantity} - $${p.price.toFixed(2)}</li>`
     ).join('');
-    
+
     const modal = new Modal('orderDetailsModal');
     modal.create(`
         <h2>Order Details: ${order.id}</h2>
@@ -514,7 +576,7 @@ function editOrderStatus(orderId) {
         Toast.show('Order not found', 'error');
         return;
     }
-    
+
     const modal = new Modal('editOrderModal');
     modal.create(`
         <h2>Edit Order Status: ${order.id}</h2>
@@ -538,7 +600,7 @@ function editOrderStatus(orderId) {
 function saveOrderStatus(orderId) {
     const select = document.getElementById('orderStatusSelect');
     if (!select) return;
-    
+
     const newStatus = select.value;
     const order = sampleOrders.find(o => o.id === orderId);
     if (order) {
@@ -556,12 +618,112 @@ window.saveOrderStatus = saveOrderStatus;
 window.loadAdminOrders = loadAdminOrders;
 
 // Stub functions for missing load functions
+// Load User Orders
 function loadUserOrders() {
-    // User orders loading - can be implemented later
+    const ordersList = document.getElementById('ordersList');
+    if (!ordersList) return;
+
+    // Filter Buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    let currentFilter = 'all';
+
+    // Render Orders Function
+    function renderOrders(filter) {
+        let filteredOrders = sampleOrders;
+        if (filter !== 'all') {
+            filteredOrders = sampleOrders.filter(order => order.status === filter);
+        }
+
+        if (filteredOrders.length === 0) {
+            ordersList.innerHTML = `
+                <div style="text-align: center; padding: 3rem;">
+                    <i class="feather-shopping-bag" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                    <h3>No orders found</h3>
+                    <p style="color: var(--text-secondary);">You haven't placed any orders yet.</p>
+                    <button class="btn btn-primary" onclick="window.location.href='index.html#shop'" style="margin-top: 1rem;">Start Shopping</button>
+                </div>
+            `;
+            return;
+        }
+
+        ordersList.innerHTML = filteredOrders.map(order => {
+            const statusClass = order.status;
+            const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+            const date = new Date(order.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+
+            const productsHtml = order.products.map(product => `
+                <div class="order-product-item" style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: 0.5rem;">
+                    <div class="order-product-image" style="width: 50px; height: 50px; min-width: 50px; background: #f5f5f5; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+                        ${product.image
+                    ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">`
+                    : `<i class="feather-package" style="color: var(--text-light); width: 24px; height: 24px;"></i>`
+                }
+                    </div>
+                    <div class="order-product-info">
+                        <p class="order-product-name" style="margin: 0; font-weight: 500;">${product.name}</p>
+                        <p class="order-product-price" style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="order-item" style="background: var(--white); border-radius: var(--radius-md); padding: var(--spacing-md); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-md);">
+                    <div class="order-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                        <div>
+                            <h3 class="order-id" style="margin: 0; font-size: 1.1rem;">${order.id}</h3>
+                            <span class="order-date" style="color: var(--text-secondary); font-size: 0.85rem;">Placed on ${date}</span>
+                        </div>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </div>
+                    
+                    <div class="order-products" style="margin-bottom: var(--spacing-md);">
+                        ${productsHtml}
+                    </div>
+                    
+                    <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color);">
+                        <div class="order-total">
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Total:</span>
+                            <strong style="font-size: 1.1rem; color: var(--primary-color);">$${order.total.toFixed(2)}</strong>
+                        </div>
+                        <div class="order-actions" style="display: flex; gap: var(--spacing-sm);">
+                            <button class="btn btn-outline" style="padding: 0.5rem 1rem;" onclick="viewOrder('${order.id}')">View Details</button>
+                            ${order.status === 'delivered' ? '<button class="btn btn-primary" style="padding: 0.5rem 1rem;">Write Review</button>' : ''}
+                            ${order.status === 'pending' || order.status === 'processing' ? '<button class="btn btn-outline" style="padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);">Cancel Order</button>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Re-initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    }
+
+    // Initial Filter Setup
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+            renderOrders(filter);
+        });
+    });
+
+    // Initial Render
+    renderOrders('all');
 }
 
 function loadUserWishlist() {
-    // User wishlist loading - can be implemented later
+    // Already populated with static content for now
 }
 
 function loadAdminProducts() {
@@ -580,11 +742,192 @@ function loadReviews() {
     // Reviews loading - can be implemented later
 }
 
+// Helper to create order card HTML (reusable)
+function createOrderCard(order, isCompact = false) {
+    const statusClass = order.status;
+    const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+    const date = new Date(order.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+
+    const productsHtml = order.products.map(product => `
+        <div class="order-product-item" style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: 0.5rem;">
+            <div class="order-product-image" style="width: 50px; height: 50px; min-width: 50px; background: #f5f5f5; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+                ${product.image
+            ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">`
+            : `<i class="feather-package" style="color: var(--text-light); width: 24px; height: 24px;"></i>`
+        }
+            </div>
+            <div class="order-product-info">
+                <p class="order-product-name" style="margin: 0; font-weight: 500; font-size: ${isCompact ? '0.9rem' : '1rem'}">${product.name}</p>
+                <p class="order-product-price" style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
+            </div>
+        </div>
+    `).join('');
+
+    return `
+        <div class="order-item" style="background: var(--white); border-radius: var(--radius-md); padding: var(--spacing-md); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-md);">
+            <div class="order-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                <div>
+                    <h3 class="order-id" style="margin: 0; font-size: 1.1rem;">${order.id}</h3>
+                    <span class="order-date" style="color: var(--text-secondary); font-size: 0.85rem;">Placed on ${date}</span>
+                </div>
+                <span class="status-badge ${statusClass}">${statusText}</span>
+            </div>
+            
+            <div class="order-products" style="margin-bottom: var(--spacing-md);">
+                ${productsHtml}
+            </div>
+            
+            <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color);">
+                <div class="order-total">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Total:</span>
+                    <strong style="font-size: 1.1rem; color: var(--primary-color);">$${order.total.toFixed(2)}</strong>
+                </div>
+                <div class="order-actions" style="display: flex; gap: var(--spacing-sm);">
+                    <button class="btn btn-outline" style="padding: 0.5rem 1rem;" onclick="viewOrder('${order.id}')">View Details</button>
+                    ${order.status === 'delivered' ? '<button class="btn btn-primary" style="padding: 0.5rem 1rem;">Write Review</button>' : ''}
+                    ${order.status === 'pending' || order.status === 'processing' ? '<button class="btn btn-outline" style="padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);">Cancel Order</button>' : ''}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Function to load Recent Orders in User Dashboard Overview
+function loadUserRecentOrders() {
+    const recentOrdersContainer = document.getElementById('recentOrders');
+    if (!recentOrdersContainer) {
+        // Retry after a short delay if element not found
+        setTimeout(() => {
+            const retryContainer = document.getElementById('recentOrders');
+            if (retryContainer) {
+                loadUserRecentOrders();
+            }
+        }, 200);
+        return;
+    }
+
+    // Clear any existing content
+    recentOrdersContainer.innerHTML = '';
+
+    // Check if sampleOrders is available
+    if (typeof sampleOrders === 'undefined' || !sampleOrders || sampleOrders.length === 0) {
+        recentOrdersContainer.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <i class="feather-shopping-bag" style="font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-secondary);">No recent orders found.</p>
+                <button class="btn btn-primary" onclick="window.location.href='shop.html'" style="margin-top: 1rem;">Start Shopping</button>
+            </div>
+        `;
+        return;
+    }
+
+    // Get recent 5 orders (sorted by date, most recent first)
+    const recentOrders = [...sampleOrders]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+
+    if (recentOrders.length === 0) {
+        recentOrdersContainer.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <i class="feather-shopping-bag" style="font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-secondary);">No recent orders found.</p>
+                <button class="btn btn-primary" onclick="window.location.href='shop.html'" style="margin-top: 1rem;">Start Shopping</button>
+            </div>
+        `;
+        return;
+    }
+
+    // Use createOrderCard if available, otherwise create inline
+    try {
+        if (typeof createOrderCard === 'function') {
+            recentOrdersContainer.innerHTML = recentOrders.map(order => createOrderCard(order, true)).join('');
+        } else {
+            // Fallback: create order cards inline
+            recentOrdersContainer.innerHTML = recentOrders.map(order => {
+                const statusClass = order.status;
+                const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+                const date = new Date(order.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                const productsHtml = order.products.map(product => `
+                <div class="order-product-item" style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: 0.5rem;">
+                    <div class="order-product-image" style="width: 50px; height: 50px; min-width: 50px; background: #f5f5f5; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+                        ${product.image ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">` : `<i class="feather-package" style="color: var(--text-light); width: 24px; height: 24px;"></i>`}
+                    </div>
+                    <div class="order-product-info">
+                        <p class="order-product-name" style="margin: 0; font-weight: 500; font-size: 0.9rem">${product.name}</p>
+                        <p class="order-product-price" style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+
+                return `
+                <div class="order-item" style="background: var(--white); border-radius: var(--radius-md); padding: var(--spacing-md); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-md);">
+                    <div class="order-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                        <div>
+                            <h3 class="order-id" style="margin: 0; font-size: 1.1rem;">${order.id}</h3>
+                            <span class="order-date" style="color: var(--text-secondary); font-size: 0.85rem;">Placed on ${date}</span>
+                        </div>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </div>
+                    <div class="order-products" style="margin-bottom: var(--spacing-md);">
+                        ${productsHtml}
+                    </div>
+                    <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color);">
+                        <div class="order-total">
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Total:</span>
+                            <strong style="font-size: 1.1rem; color: var(--primary-color);">$${order.total.toFixed(2)}</strong>
+                        </div>
+                        <div class="order-actions" style="display: flex; gap: var(--spacing-sm);">
+                            <button class="btn btn-outline" style="padding: 0.5rem 1rem;" onclick="if(typeof viewOrder === 'function') viewOrder('${order.id}')">View Details</button>
+                            ${order.status === 'delivered' ? '<button class="btn btn-primary" style="padding: 0.5rem 1rem;">Write Review</button>' : ''}
+                            ${order.status === 'pending' || order.status === 'processing' ? '<button class="btn btn-outline" style="padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);">Cancel Order</button>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+    } catch (error) {
+        console.error('Error rendering recent orders:', error);
+        recentOrdersContainer.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <i class="feather-alert-circle" style="font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-secondary);">Unable to load recent orders. Please refresh the page.</p>
+            </div>
+        `;
+    }
+
+    // Re-initialize Feather Icons
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
+}
+
+// Make function globally available
+window.loadUserRecentOrders = loadUserRecentOrders;
+
 // Load Dashboard Data
 function loadDashboardData() {
     try {
-        if (typeof loadUserOrders === 'function') loadUserOrders();
+        // Load user dashboard data with delays to ensure DOM is ready
+        if (typeof loadUserOrders === 'function') {
+            setTimeout(() => loadUserOrders(), 100);
+        }
+        if (typeof loadUserRecentOrders === 'function') {
+            // Load recent orders with a slight delay to ensure DOM is ready
+            setTimeout(() => loadUserRecentOrders(), 150);
+        }
         if (typeof loadUserWishlist === 'function') loadUserWishlist();
+
+        // Load admin dashboard data
         loadAdminOrders(); // Always load admin orders
         if (typeof loadAdminProducts === 'function') loadAdminProducts();
         if (typeof loadAdminCustomers === 'function') loadAdminCustomers();
@@ -594,6 +937,10 @@ function loadDashboardData() {
         console.error('Error loading dashboard data:', error);
         // Still try to load admin orders even if other functions fail
         loadAdminOrders();
+        // Retry loading recent orders
+        if (typeof loadUserRecentOrders === 'function') {
+            setTimeout(() => loadUserRecentOrders(), 300);
+        }
     }
     // Don't initialize charts here - wait for analytics tab to be active
 }
@@ -618,13 +965,13 @@ function destroyCharts() {
 function initAnalyticsCharts() {
     // Destroy existing charts first
     destroyCharts();
-    
+
     // Check if Chart.js is available
     if (typeof Chart === 'undefined') {
         console.error('Chart.js is not loaded');
         return;
     }
-    
+
     // Get responsive font sizes based on screen width
     const getResponsiveFontSize = (baseSize) => {
         if (window.innerWidth <= 768) {
@@ -634,7 +981,7 @@ function initAnalyticsCharts() {
         }
         return baseSize; // Desktop: full size
     };
-    
+
     // Get chart height based on screen width
     const getChartHeight = (baseHeight) => {
         if (window.innerWidth <= 768) {
@@ -644,7 +991,7 @@ function initAnalyticsCharts() {
         }
         return baseHeight; // Desktop: full height
     };
-    
+
     // Common chart options
     const commonOptions = {
         responsive: true,
@@ -701,7 +1048,7 @@ function initAnalyticsCharts() {
                     font: {
                         size: getResponsiveFontSize(11)
                     },
-                    callback: function(value) {
+                    callback: function (value) {
                         return '$' + value.toLocaleString();
                     }
                 },
@@ -712,7 +1059,7 @@ function initAnalyticsCharts() {
             }
         }
     };
-    
+
     // Revenue Chart
     const revenueCtx = document.getElementById('revenueChartCanvas');
     if (revenueCtx) {
@@ -720,7 +1067,7 @@ function initAnalyticsCharts() {
         if (revenueWrapper) {
             revenueWrapper.style.height = getChartHeight(400) + 'px';
         }
-        
+
         chartInstances.revenue = new Chart(revenueCtx, {
             type: 'line',
             data: {
@@ -748,7 +1095,7 @@ function initAnalyticsCharts() {
                         ...commonOptions.scales.y,
                         ticks: {
                             ...commonOptions.scales.y.ticks,
-                            callback: function(value) {
+                            callback: function (value) {
                                 if (window.innerWidth <= 768) {
                                     return value >= 1000 ? '$' + (value / 1000).toFixed(1) + 'k' : '$' + value;
                                 }
@@ -760,7 +1107,7 @@ function initAnalyticsCharts() {
             }
         });
     }
-    
+
     // Orders Chart
     const ordersCtx = document.getElementById('ordersChartCanvas');
     if (ordersCtx) {
@@ -768,7 +1115,7 @@ function initAnalyticsCharts() {
         if (ordersWrapper) {
             ordersWrapper.style.height = getChartHeight(300) + 'px';
         }
-        
+
         chartInstances.orders = new Chart(ordersCtx, {
             type: 'bar',
             data: {
@@ -786,7 +1133,7 @@ function initAnalyticsCharts() {
             options: commonOptions
         });
     }
-    
+
     // Category Chart (Doughnut)
     const categoryCtx = document.getElementById('categoryChartCanvas');
     if (categoryCtx) {
@@ -794,7 +1141,7 @@ function initAnalyticsCharts() {
         if (categoryWrapper) {
             categoryWrapper.style.height = getChartHeight(300) + 'px';
         }
-        
+
         chartInstances.category = new Chart(categoryCtx, {
             type: 'doughnut',
             data: {
@@ -846,7 +1193,7 @@ function initAnalyticsCharts() {
                         },
                         cornerRadius: 8,
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.label + ': ' + context.parsed + '%';
                             }
                         }

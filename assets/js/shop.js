@@ -14,9 +14,131 @@ document.addEventListener('DOMContentLoaded', () => {
     // initBreadcrumbs();
     loadProducts();
     initFilters();
+    initMobileFilter();
+    
+    // Initialize Feather icons
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
 });
 
 // initBreadcrumbs removed
+
+function initMobileFilter() {
+    const filterToggleBtn = document.getElementById('filterToggleBtn');
+    const filterCloseBtn = document.getElementById('filterCloseBtn');
+    const filterSection = document.getElementById('filterSection');
+    const filterOverlay = document.getElementById('filterModalOverlay');
+
+    if (!filterSection) {
+        console.warn('Filter section not found');
+        return;
+    }
+
+    // Store original parent for restoration
+    let originalParent = filterSection.parentElement;
+
+    function openFilter() {
+        console.log('Opening filter');
+        // Only move to body on mobile
+        if (window.innerWidth <= 768) {
+            if (filterSection.parentElement !== document.body) {
+                originalParent = filterSection.parentElement;
+                document.body.appendChild(filterSection);
+            }
+        }
+        filterSection.classList.add('active');
+        if (filterOverlay) {
+            filterOverlay.classList.add('active');
+        }
+        document.body.style.overflow = 'hidden';
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    }
+
+    function closeFilter() {
+        console.log('Closing filter');
+        filterSection.classList.remove('active');
+        if (filterOverlay) {
+            filterOverlay.classList.remove('active');
+        }
+        document.body.style.overflow = '';
+        // Move filter section back to original parent
+        if (filterSection.parentElement === document.body && originalParent) {
+            originalParent.appendChild(filterSection);
+        }
+    }
+
+    // Only set up mobile filter button on mobile
+    if (window.innerWidth <= 768 && filterToggleBtn) {
+        filterToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openFilter();
+        });
+    } else {
+        // On desktop, ensure filter section is in sidebar
+        const sidebar = document.querySelector('.shop-sidebar');
+        if (sidebar && filterSection.parentElement === document.body) {
+            sidebar.appendChild(filterSection);
+        }
+    }
+    
+    if (filterCloseBtn) {
+        filterCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeFilter();
+        });
+    }
+
+    if (filterOverlay) {
+        filterOverlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeFilter();
+        });
+    }
+
+    // Close filter when Apply Filters is clicked on mobile
+    const applyBtn = document.querySelector('#filterSection .btn-primary');
+    if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+            setTimeout(() => {
+                if (window.innerWidth <= 768) {
+                    closeFilter();
+                }
+            }, 200);
+        });
+    }
+
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 768) {
+                // Desktop: close filter and move back to sidebar
+                closeFilter();
+                const sidebar = document.querySelector('.shop-sidebar');
+                if (sidebar && filterSection.parentElement === document.body) {
+                    sidebar.appendChild(filterSection);
+                }
+            } else {
+                // Mobile: ensure filter button is set up
+                if (filterToggleBtn && !filterToggleBtn.hasAttribute('data-listener-added')) {
+                    filterToggleBtn.setAttribute('data-listener-added', 'true');
+                    filterToggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openFilter();
+                    });
+                }
+            }
+        }, 250);
+    });
+}
 
 function initFilters() {
     // Category filters
@@ -159,6 +281,12 @@ function loadProducts() {
     setTimeout(() => {
         // Filter products
         let filtered = filterProducts(productsData);
+        
+        // Exclude specific products
+        filtered = filtered.filter(product => 
+            product.name !== "Rose Gold Dangle Earrings" && 
+            product.name !== "Rose Gold Choker"
+        );
 
         // Sort products
         filtered = getSortedProducts(filtered);

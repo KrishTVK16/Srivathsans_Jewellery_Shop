@@ -102,40 +102,41 @@
 
     <!-- Shop Content -->
     <section class="section shop-content">
+        <!-- Filter Modal Overlay (outside layout) -->
+        <div class="filter-modal-overlay" id="filterModalOverlay"></div>
+        
         <div class="container">
             <div class="shop-layout">
                 <!-- Sidebar Filters -->
                 <aside class="shop-sidebar" data-aos="fade-right">
-                    <div class="filter-section">
-                        <h3 class="filter-title">Filters</h3>
+                    <div class="filter-section" id="filterSection">
+                        <div class="filter-header">
+                            <h3 class="filter-title">Filters</h3>
+                            <button class="filter-close-btn" id="filterCloseBtn" aria-label="Close filters">
+                                <i class="feather-x" data-feather="x"></i>
+                            </button>
+                        </div>
 
                         <div class="filter-group">
                             <h4 class="filter-group-title">Category</h4>
                             <div class="filter-checkboxes">
-                                <label><input type="checkbox" value="necklaces" class="category-filter">
+                                <label><input type="checkbox" name="category" value="necklaces" class="category-filter">
                                     Necklaces</label>
-                                <label><input type="checkbox" value="earrings" class="category-filter"> Earrings</label>
-                                <label><input type="checkbox" value="rings" class="category-filter"> Rings</label>
-                                <label><input type="checkbox" value="bracelets" class="category-filter">
+                                <label><input type="checkbox" name="category" value="earrings" class="category-filter"> Earrings</label>
+                                <label><input type="checkbox" name="category" value="rings" class="category-filter"> Rings</label>
+                                <label><input type="checkbox" name="category" value="bracelets" class="category-filter">
                                     Bracelets</label>
-                                </label>
                             </div>
 
                             <div class="filter-group">
                                 <h4 class="filter-group-title">Material</h4>
                                 <div class="filter-checkboxes">
-                                    <label><input type="checkbox" value="gold" class="material-filter"> Gold</label>
-                                    <label><input type="checkbox" value="platinum" class="material-filter">
+                                    <label><input type="checkbox" name="material" value="gold" class="material-filter"> Gold</label>
+                                    <label><input type="checkbox" name="material" value="platinum" class="material-filter">
                                         Platinum</label>
-                                    <label><input type="checkbox" value="diamond" class="material-filter">
+                                    <label><input type="checkbox" name="material" value="diamond" class="material-filter">
                                         Diamond</label>
-                                    <label><input type="checkbox" value="pearl" class="material-filter"> Pearl</label>
-                                </div>
-                            </div>
-
-                            <div class="filter-group">
-                                <h4 class="filter-group-title">Collection</h4>
-                                <div class="filter-checkboxes">
+                                    <label><input type="checkbox" name="material" value="pearl" class="material-filter"> Pearl</label>
                                 </div>
                             </div>
 
@@ -144,6 +145,7 @@
                             <button class="btn btn-outline" style="width: 100%; margin-top: 0.5rem;"
                                 onclick="clearFilters()">Clear All</button>
                         </div>
+                    </div>
                 </aside>
 
                 <!-- Main Content -->
@@ -154,6 +156,10 @@
                             <span id="productCount">24 products</span>
                         </div>
                         <div class="toolbar-right">
+                            <button class="filter-toggle-btn" id="filterToggleBtn" aria-label="Toggle filters">
+                                <i class="feather-filter" data-feather="filter"></i>
+                                <span>Filters</span>
+                            </button>
                             <select class="sort-select" id="sortSelect" onchange="sortProducts()">
                                 <option value="popularity">Sort by: Popularity</option>
                                 <option value="latest">Sort by: Latest</option>

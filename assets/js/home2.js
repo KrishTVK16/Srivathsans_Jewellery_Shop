@@ -14,11 +14,11 @@ function loadBestsellers() {
     // Get featured/trending products (bestsellers)
     const bestsellers = productsData
         .filter(product => product.featured || product.trending)
-        .slice(0, 8); // Show top 8 bestsellers
+        .slice(0, 6); // Show top 6 bestsellers
     
     if (bestsellers.length === 0) {
-        // Fallback to first 8 products if no featured/trending
-        bestsellers.push(...productsData.slice(0, 8));
+        // Fallback to first 6 products if no featured/trending
+        bestsellers.push(...productsData.slice(0, 6));
     }
     
     bestsellersGrid.innerHTML = bestsellers.map(product => createProductCard(product)).join('');

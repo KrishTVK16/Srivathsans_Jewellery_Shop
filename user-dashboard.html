@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="User Dashboard - Manage your orders, profile, and account settings">
     <title>User Dashboard - Jewellery Online Store</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
     <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
-    
+
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/account.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
+
 <body>
     <!-- Dashboard Header -->
     <header class="dashboard-header">
@@ -34,7 +38,8 @@
             <div class="dashboard-brand">
                 <a href="index.html">
                     <div class="brand-icon">
-                        <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="favicon.svg" alt="Jewellery Logo"
+                            style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="brand-content">
                         <span class="brand-text">JEWELLERY</span>
@@ -42,9 +47,6 @@
                     </div>
                 </a>
             </div>
-            <button class="btn btn-outline logout-btn" onclick="window.location.href='index.html'">
-                <i class="feather-log-out"></i> Logout
-            </button>
             <button class="account-menu-toggle" id="accountMenuToggle" aria-label="Toggle menu">
                 <i class="feather-menu" data-feather="menu"></i>
             </button>
@@ -88,6 +90,11 @@
                             <i class="feather-settings"></i>
                             <span>Settings</span>
                         </div>
+                        <div class="account-menu-item" onclick="window.location.href='index.html'"
+                            style="margin-top: var(--spacing-md); color: var(--error);">
+                            <i class="feather-log-out"></i>
+                            <span>Logout</span>
+                        </div>
                     </div>
                 </aside>
 
@@ -95,13 +102,20 @@
                 <main class="account-main">
                     <!-- Overview Tab -->
                     <div class="dashboard-tab active" id="overview">
-                        <h1 class="page-title">Dashboard Overview</h1>
-                        <p class="page-subtitle">Welcome back! Here's your account summary</p>
-                        
+                        <!-- Top Bar -->
+                        <div class="user-topbar" style="justify-content: center; margin-bottom: var(--spacing-lg);">
+                            <div style="text-align: center;">
+                                <h1 class="page-title" style="margin: 0; font-size: 1.75rem;">User Dashboard</h1>
+                                <p style="margin: 0.25rem 0 0 0; color: var(--text-secondary);">Welcome back! Here's
+                                    your account summary</p>
+                            </div>
+                        </div>
+
                         <!-- Stats Cards -->
                         <div class="dashboard-stats">
                             <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-                                <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="stat-icon"
+                                    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                                     <i class="feather-shopping-bag"></i>
                                 </div>
                                 <div class="stat-info">
@@ -109,9 +123,10 @@
                                     <p>Total Orders</p>
                                 </div>
                             </div>
-                            
+
                             <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-                                <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <div class="stat-icon"
+                                    style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                                     <i class="feather-heart"></i>
                                 </div>
                                 <div class="stat-info">
@@ -119,9 +134,10 @@
                                     <p>Wishlist Items</p>
                                 </div>
                             </div>
-                            
+
                             <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-                                <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <div class="stat-icon"
+                                    style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
                                     <i class="feather-dollar-sign"></i>
                                 </div>
                                 <div class="stat-info">
@@ -129,9 +145,10 @@
                                     <p>Total Spent</p>
                                 </div>
                             </div>
-                            
+
                             <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
-                                <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                <div class="stat-icon"
+                                    style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
                                     <i class="feather-award"></i>
                                 </div>
                                 <div class="stat-info">
@@ -154,31 +171,35 @@
                             <h2>Quick Actions</h2>
                             <div class="quick-actions-grid">
                                 <a href="shop.html" class="quick-action-card" data-aos="fade-up">
-                                    <div class="quick-action-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div class="quick-action-icon"
+                                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                                         <i class="feather-shopping-cart"></i>
                                     </div>
                                     <h3>Continue Shopping</h3>
                                     <p>Browse our latest collection</p>
                                 </a>
-                                
+
                                 <a href="#orders" class="quick-action-card" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="quick-action-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <div class="quick-action-icon"
+                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                                         <i class="feather-package"></i>
                                     </div>
                                     <h3>Track Orders</h3>
                                     <p>View order status</p>
                                 </a>
-                                
+
                                 <a href="#wishlist" class="quick-action-card" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="quick-action-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                    <div class="quick-action-icon"
+                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
                                         <i class="feather-heart"></i>
                                     </div>
                                     <h3>My Wishlist</h3>
                                     <p>View saved items</p>
                                 </a>
-                                
+
                                 <a href="#profile" class="quick-action-card" data-aos="fade-up" data-aos-delay="300">
-                                    <div class="quick-action-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                    <div class="quick-action-icon"
+                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
                                         <i class="feather-user"></i>
                                     </div>
                                     <h3>Edit Profile</h3>
@@ -192,7 +213,7 @@
                     <div class="dashboard-tab" id="orders">
                         <h1 class="page-title">My Orders</h1>
                         <p class="page-subtitle">View and manage your orders</p>
-                        
+
                         <div class="orders-filter">
                             <button class="filter-btn active" data-filter="all">All Orders</button>
                             <button class="filter-btn" data-filter="pending">Pending</button>
@@ -200,7 +221,7 @@
                             <button class="filter-btn" data-filter="delivered">Delivered</button>
                             <button class="filter-btn" data-filter="cancelled">Cancelled</button>
                         </div>
-                        
+
                         <div class="orders-list" id="ordersList">
                             <!-- Orders will be loaded here -->
                         </div>
@@ -210,9 +231,71 @@
                     <div class="dashboard-tab" id="wishlist">
                         <h1 class="page-title">My Wishlist</h1>
                         <p class="page-subtitle">Items you've saved for later</p>
-                        
-                        <div class="wishlist-grid" id="wishlistGrid">
-                            <!-- Wishlist items will be loaded here -->
+
+                        <div class="wishlist-grid" id="wishlistGrid"
+                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            <!-- Wishlist Item 1 -->
+                            <div class="product-card"
+                                style="border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);">
+                                <div style="position: relative; padding-top: 100%; background: #f9f9f9;">
+                                    <img src="https://images.unsplash.com/photo-1758995115518-26f90aa61b97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmVja2xhY2UlMjBqZXdlbHJ5JTIwYWVzdGhldGljfGVufDB8fDB8fHww"
+                                        alt="Elegant Gold Necklace"
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                    <button class="btn-icon"
+                                        style="position: absolute; top: 10px; right: 10px; background: white; border-radius: 50%; width: 32px; height: 32px; border: none; box-shadow: var(--shadow-sm); cursor: pointer; color: var(--error);">
+                                        <i class="feather-trash-2" style="width: 16px; height: 16px;"></i>
+                                    </button>
+                                </div>
+                                <div style="padding: 1rem;">
+                                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Elegant Gold Necklace</h3>
+                                    <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">
+                                        $899.00</p>
+                                    <button class="btn btn-primary" style="width: 100%; font-size: 0.875rem;">Add to
+                                        Cart</button>
+                                </div>
+                            </div>
+
+                            <!-- Wishlist Item 2 -->
+                            <div class="product-card"
+                                style="border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);">
+                                <div style="position: relative; padding-top: 100%; background: #f9f9f9;">
+                                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&auto=format&q=80"
+                                        alt="Solitaire Diamond Ring"
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                    <button class="btn-icon"
+                                        style="position: absolute; top: 10px; right: 10px; background: white; border-radius: 50%; width: 32px; height: 32px; border: none; box-shadow: var(--shadow-sm); cursor: pointer; color: var(--error);">
+                                        <i class="feather-trash-2" style="width: 16px; height: 16px;"></i>
+                                    </button>
+                                </div>
+                                <div style="padding: 1rem;">
+                                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Solitaire Diamond Ring</h3>
+                                    <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">
+                                        $1,299.00</p>
+                                    <button class="btn btn-primary" style="width: 100%; font-size: 0.875rem;">Add to
+                                        Cart</button>
+                                </div>
+                            </div>
+
+                            <!-- Wishlist Item 3 -->
+                            <div class="product-card"
+                                style="border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);">
+                                <div style="position: relative; padding-top: 100%; background: #f9f9f9;">
+                                    <img src="https://plus.unsplash.com/premium_photo-1739548338201-4c337ce176d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UGVhcmwlMjBEcm9wJTIwRWFycmluZ3N8ZW58MHx8MHx8fDA%3D"
+                                        alt="Pearl Drop Earrings"
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                    <button class="btn-icon"
+                                        style="position: absolute; top: 10px; right: 10px; background: white; border-radius: 50%; width: 32px; height: 32px; border: none; box-shadow: var(--shadow-sm); cursor: pointer; color: var(--error);">
+                                        <i class="feather-trash-2" style="width: 16px; height: 16px;"></i>
+                                    </button>
+                                </div>
+                                <div style="padding: 1rem;">
+                                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Pearl Drop Earrings</h3>
+                                    <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">
+                                        $450.00</p>
+                                    <button class="btn btn-primary" style="width: 100%; font-size: 0.875rem;">Add to
+                                        Cart</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -220,38 +303,40 @@
                     <div class="dashboard-tab" id="profile">
                         <h1 class="page-title">My Profile</h1>
                         <p class="page-subtitle">Manage your personal information</p>
-                        
+
                         <form class="profile-form" id="profileForm">
                             <div class="profile-avatar-section">
                                 <div class="avatar-preview">
-                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=d4af37&color=fff&size=120" alt="Profile" id="avatarPreview">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=d4af37&color=fff&size=120"
+                                        alt="Profile" id="avatarPreview">
                                 </div>
-                                <button type="button" class="btn btn-outline" onclick="document.getElementById('avatarInput').click()">
+                                <button type="button" class="btn btn-outline"
+                                    onclick="document.getElementById('avatarInput').click()">
                                     <i class="feather-camera"></i> Change Photo
                                 </button>
                                 <input type="file" id="avatarInput" accept="image/*" style="display: none;">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" name="fullName" value="John Doe" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" name="email" value="john.doe@example.com" required>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Phone Number</label>
                                 <input type="tel" name="phone" value="+1 (555) 123-4567">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Date of Birth</label>
                                 <input type="date" name="dob" value="1990-01-15">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Gender</label>
                                 <select name="gender">
@@ -261,7 +346,7 @@
                                     <option value="prefer-not-to-say">Prefer not to say</option>
                                 </select>
                             </div>
-                            
+
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
                     </div>
@@ -270,80 +355,202 @@
                     <div class="dashboard-tab" id="addresses">
                         <h1 class="page-title">My Addresses</h1>
                         <p class="page-subtitle">Manage your shipping addresses</p>
-                        
+
                         <button class="btn btn-primary" id="addAddressBtn" style="margin-bottom: var(--spacing-lg);">
                             <i class="feather-plus"></i> Add New Address
                         </button>
-                        
+
                         <div class="address-list" id="addressList">
-                            <!-- Addresses will be loaded here -->
+                            <!-- Address Card 1 (Default) -->
+                            <div class="address-card default">
+                                <span class="default-badge"
+                                    style="position: absolute; top: 1rem; right: 1rem;">Default</span>
+                                <div style="margin-bottom: 1rem;">
+                                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Home</h3>
+                                    <p style="margin-bottom: 0.25rem;"><strong>John Doe</strong></p>
+                                    <p style="color: var(--text-secondary); line-height: 1.5;">
+                                        123 Luxury Lane, Apt 4B<br>
+                                        Beverly Hills, CA 90210<br>
+                                        United States
+                                    </p>
+                                    <p style="margin-top: 0.5rem; color: var(--text-secondary);">Phone: +1 (555)
+                                        123-4567</p>
+                                </div>
+                                <div class="address-card-actions">
+                                    <button class="btn btn-sm btn-outline"><i class="feather-edit-2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-outline"><i class="feather-trash-2"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Address Card 2 -->
+                            <div class="address-card">
+                                <div style="margin-bottom: 1rem;">
+                                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Office</h3>
+                                    <p style="margin-bottom: 0.25rem;"><strong>John Doe</strong></p>
+                                    <p style="color: var(--text-secondary); line-height: 1.5;">
+                                        456 Corporate Blvd, Suite 200<br>
+                                        New York, NY 10001<br>
+                                        United States
+                                    </p>
+                                    <p style="margin-top: 0.5rem; color: var(--text-secondary);">Phone: +1 (555)
+                                        987-6543</p>
+                                </div>
+                                <div class="address-card-actions">
+                                    <button class="btn btn-sm btn-outlineLink" style="color: var(--primary-color);">Set
+                                        as Default</button>
+                                    <button class="btn btn-sm btn-outline"><i class="feather-edit-2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-outline"><i class="feather-trash-2"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Settings Tab -->
                     <div class="dashboard-tab" id="settings">
-                        <h1 class="page-title">Account Settings</h1>
-                        <p class="page-subtitle">Manage your account preferences</p>
-                        
-                        <div class="settings-section">
-                            <h3>Password & Security</h3>
-                            <form class="profile-form" id="passwordForm">
-                                <div class="form-group">
-                                    <label>Current Password</label>
-                                    <input type="password" name="currentPassword" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>New Password</label>
-                                    <input type="password" name="newPassword" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Confirm New Password</label>
-                                    <input type="password" name="confirmPassword" required>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary">Update Password</button>
-                            </form>
-                        </div>
-                        
-                        <div class="settings-section">
-                            <h3>Notifications</h3>
-                            <div class="notification-settings">
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                    <span>Email Notifications</span>
-                                </label>
-                                
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                    <span>SMS Notifications</span>
-                                </label>
-                                
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider"></span>
-                                    <span>Marketing Emails</span>
-                                </label>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                            <div>
+                                <h1 class="page-title" style="margin-bottom: 0.5rem;">Account Settings</h1>
+                                <p class="page-subtitle" style="margin: 0;">Manage your account preferences</p>
                             </div>
                         </div>
-                        
-                        <div class="settings-section">
-                            <h3>Privacy</h3>
-                            <div class="privacy-settings">
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                    <span>Profile Visibility</span>
-                                </label>
-                                
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider"></span>
-                                    <span>Show Activity Status</span>
-                                </label>
+
+                        <div class="settings-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-lg);">
+                            <!-- Security Card -->
+                            <div class="stat-card"
+                                style="height: auto; border-left: 4px solid var(--error); display: flex; flex-direction: column; align-items: stretch;">
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: rgba(220, 53, 69, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--error);">
+                                        <i class="feather-shield"></i>
+                                    </div>
+                                    <h3 style="margin: 0; color: var(--text-primary); font-size: 1.25rem;">Password &
+                                        Security</h3>
+                                </div>
+
+                                <form class="profile-form" id="passwordForm" style="max-width: 100%;">
+                                    <div class="form-group" style="margin-bottom: var(--spacing-md);">
+                                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Current
+                                            Password</label>
+                                        <div style="position: relative;">
+                                            <i class="feather-lock"
+                                                style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); width: 16px; height: 16px; z-index: 10;"></i>
+                                            <input type="password" name="currentPassword"
+                                                placeholder="Enter current password" required
+                                                style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); transition: var(--transition);">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="margin-bottom: var(--spacing-md);">
+                                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">New
+                                            Password</label>
+                                        <div style="position: relative;">
+                                            <i class="feather-key"
+                                                style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); width: 16px; height: 16px; z-index: 10;"></i>
+                                            <input type="password" name="newPassword" placeholder="Enter new password"
+                                                required
+                                                style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); transition: var(--transition);">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Confirm
+                                            New Password</label>
+                                        <div style="position: relative;">
+                                            <i class="feather-check-circle"
+                                                style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); width: 16px; height: 16px; z-index: 10;"></i>
+                                            <input type="password" name="confirmPassword"
+                                                placeholder="Confirm new password" required
+                                                style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); transition: var(--transition);">
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-outline"
+                                        style="width: 100%; justify-content: center; padding: 0.8rem; border-color: var(--primary-color); color: var(--primary-color);">
+                                        <i class="feather-refresh-cw"
+                                            style="margin-right: 0.5rem; width: 16px; height: 16px;"></i> Update
+                                        Password
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Preferences Card -->
+                            <div class="stat-card"
+                                style="height: auto; border-left: 4px solid var(--primary-color); display: flex; flex-direction: column; align-items: stretch;">
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color);">
+                                    <div
+                                        style="width: 40px; height: 40px; background: rgba(212, 175, 55, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                        <i class="feather-settings"></i>
+                                    </div>
+                                    <h3 style="margin: 0; color: var(--text-primary); font-size: 1.25rem;">Preferences
+                                    </h3>
+                                </div>
+
+                                <div style="margin-bottom: var(--spacing-lg);">
+                                    <h4
+                                        style="margin: 0 0 var(--spacing-sm) 0; color: var(--text-primary); font-size: 1rem;">
+                                        Notifications</h4>
+                                    <div class="notification-settings"
+                                        style="display: flex; flex-direction: column; gap: 1rem;">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+                                            <span style="color: var(--text-secondary);">Email Notifications</span>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+                                            <span style="color: var(--text-secondary);">SMS Notifications</span>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+                                            <span style="color: var(--text-secondary);">Marketing Emails</span>
+                                            <label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        style="margin: 0 0 var(--spacing-sm) 0; color: var(--text-primary); font-size: 1rem;">
+                                        Privacy</h4>
+                                    <div class="privacy-settings"
+                                        style="display: flex; flex-direction: column; gap: 1rem;">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+                                            <span style="color: var(--text-secondary);">Profile Visibility</span>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+                                            <span style="color: var(--text-secondary);">Show Activity Status</span>
+                                            <label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -368,7 +575,28 @@
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
+
+        // Ensure recent orders are loaded after page is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Additional call to ensure recent orders load
+            setTimeout(() => {
+                if (typeof loadUserRecentOrders === 'function') {
+                    loadUserRecentOrders();
+                }
+            }, 200);
+        });
+
+        // Also try loading when overview tab becomes active
+        if (typeof switchTab === 'function') {
+            const originalSwitchTab = window.switchTab;
+            window.switchTab = function (tabName) {
+                originalSwitchTab(tabName);
+                if (tabName === 'overview' && typeof loadUserRecentOrders === 'function') {
+                    setTimeout(() => loadUserRecentOrders(), 100);
+                }
+            };
+        }
     </script>
 </body>
-</html>
 
+</html>

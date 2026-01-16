@@ -5,6 +5,11 @@
     min-height: 100vh;
     background: var(--bg-light);
     padding-top: 70px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .admin-sidebar {
@@ -15,7 +20,17 @@
     height: calc(100vh - 70px);
     top: 70px;
     overflow-y: auto;
+    overflow-x: hidden;
     z-index: 100;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.admin-sidebar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    width: 0;
+    height: 0;
 }
 
 [data-theme="dark"] .admin-sidebar {
@@ -55,10 +70,24 @@
     border-left-color: var(--primary-color);
 }
 
+.admin-menu-item[onclick] {
+    cursor: pointer;
+}
+
+.admin-menu-item[onclick]:hover {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--error);
+}
+
 .admin-main {
     flex: 1;
     margin-left: 260px;
     padding: var(--spacing-lg);
+    width: calc(100% - 260px);
+    max-width: calc(100% - 260px);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .admin-topbar {
@@ -70,6 +99,9 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow-sm);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 [data-theme="dark"] .admin-topbar {
@@ -81,6 +113,44 @@
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Ensure consistent alignment for all tabs */
+.admin-tab {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.admin-tab#overview .admin-topbar {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Ensure consistent top spacing for all tabs */
+.admin-tab:not(#overview) {
+    padding-top: 0;
+}
+
+/* Ensure page titles in other tabs have consistent styling and spacing */
+.admin-tab:not(#overview) .admin-content > h2:first-child {
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+}
+
+/* Ensure consistent spacing for section headers in other tabs */
+.admin-tab:not(#overview) .admin-content > div:first-child {
+    margin-top: 0;
 }
 
 [data-theme="dark"] .admin-content {
@@ -225,6 +295,10 @@
 @media (max-width: 1024px) {
     .admin-layout {
         padding-top: 60px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .admin-menu-toggle {
@@ -241,6 +315,17 @@
         left: 0;
         z-index: 1000;
         box-shadow: var(--shadow-xl);
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* Hide scrollbar */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .admin-sidebar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+        width: 0;
+        height: 0;
     }
     
     .admin-sidebar.active {
@@ -250,6 +335,10 @@
     .admin-main {
         margin-left: 0;
         padding: var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .admin-topbar {
@@ -284,6 +373,8 @@
         max-width: 100%;
         box-sizing: border-box;
         overflow-x: hidden;
+        overflow-y: visible;
+        padding: var(--spacing-md);
     }
     
     .admin-main {
@@ -344,6 +435,10 @@
 @media (max-width: 768px) {
     .admin-layout {
         padding-top: 60px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .admin-menu-toggle {
@@ -385,6 +480,17 @@
         box-shadow: var(--shadow-xl);
         position: fixed;
         left: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* Hide scrollbar */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .admin-sidebar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+        width: 0;
+        height: 0;
     }
     
     .admin-sidebar.active {
@@ -439,6 +545,8 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
     
     .admin-topbar {
@@ -463,6 +571,15 @@
         max-width: 100%;
         box-sizing: border-box;
         overflow-x: hidden;
+        overflow-y: visible;
+    }
+    
+    .admin-tab {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: visible;
     }
     
     .stats-grid {
@@ -520,14 +637,24 @@
     
     .table-responsive {
         width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
         overflow-x: auto;
+        overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         margin-top: var(--spacing-sm);
+        scrollbar-width: thin;
+    }
+    
+    .table-responsive::-webkit-scrollbar {
+        height: 6px;
     }
     
     .data-table {
         min-width: 800px;
+        width: 100%;
         font-size: 0.875rem;
+        border-collapse: collapse;
     }
     
     .data-table th,
@@ -551,6 +678,15 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+    
+    .chart-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .chart-container {
@@ -610,6 +746,9 @@
     .categories-grid-admin {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .category-card-admin {
@@ -629,6 +768,9 @@
     /* Reviews List - Mobile */
     .reviews-list {
         gap: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .review-card {
@@ -644,10 +786,16 @@
     /* Settings Sections - Mobile */
     .settings-sections {
         gap: var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .settings-section {
         padding: var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .notification-settings,

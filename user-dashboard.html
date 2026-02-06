@@ -211,19 +211,210 @@
 
                     <!-- Orders Tab -->
                     <div class="dashboard-tab" id="orders">
-                        <h1 class="page-title">My Orders</h1>
-                        <p class="page-subtitle">View and manage your orders</p>
-
-                        <div class="orders-filter">
-                            <button class="filter-btn active" data-filter="all">All Orders</button>
-                            <button class="filter-btn" data-filter="pending">Pending</button>
-                            <button class="filter-btn" data-filter="processing">Processing</button>
-                            <button class="filter-btn" data-filter="delivered">Delivered</button>
-                            <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                        <!-- Modern Orders Header -->
+                        <div class="orders-header">
+                            <div class="orders-title-section">
+                                <h1 class="page-title">My Orders</h1>
+                                <p class="page-subtitle">View and manage your orders</p>
+                            </div>
+                            <div class="orders-actions">
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="feather-download"></i> Export
+                                </button>
+                            </div>
                         </div>
 
+                        <!-- Enhanced Filter -->
+                        <div class="orders-filter-enhanced">
+                            <div class="filter-group">
+                                <button class="filter-btn active" data-filter="all">
+                                    <i class="feather-list"></i> All Orders
+                                </button>
+                                <button class="filter-btn" data-filter="pending">
+                                    <i class="feather-clock"></i> Pending
+                                </button>
+                                <button class="filter-btn" data-filter="processing">
+                                    <i class="feather-package"></i> Processing
+                                </button>
+                                <button class="filter-btn" data-filter="delivered">
+                                    <i class="feather-check-circle"></i> Delivered
+                                </button>
+                                <button class="filter-btn" data-filter="cancelled">
+                                    <i class="feather-x-circle"></i> Cancelled
+                                </button>
+                            </div>
+                            <div class="search-box">
+                                <i class="feather-search"></i>
+                                <input type="text" placeholder="Search orders...">
+                            </div>
+                        </div>
+
+                        <!-- Modern Orders List -->
                         <div class="orders-list" id="ordersList">
-                            <!-- Orders will be loaded here -->
+                            <!-- Order Item 1 -->
+                            <div class="order-item-enhanced" data-status="delivered">
+                                <div class="order-header-enhanced">
+                                    <div class="order-info">
+                                        <div class="order-id-badge">
+                                            <span class="order-id">#ORD-2024-001</span>
+                                            <span class="order-date">Jan 15, 2024</span>
+                                        </div>
+                                        <div class="order-status delivered">
+                                            <i class="feather-check-circle"></i> Delivered
+                                        </div>
+                                    </div>
+                                    <div class="order-total">
+                                        <span class="total-amount">$1,798.00</span>
+                                        <span class="items-count">2 items</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-products-enhanced">
+                                    <div class="product-item">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1758995115518-26f90aa61b97?w=100&h=100&fit=crop&auto=format&q=80"
+                                                alt="Gold Necklace">
+                                        </div>
+                                        <div class="product-details">
+                                            <h4>Elegant Gold Necklace</h4>
+                                            <p>Quantity: 1 | Size: 18 inch</p>
+                                        </div>
+                                        <div class="product-price">
+                                            $899.00
+                                        </div>
+                                    </div>
+
+                                    <div class="product-item">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=100&h=100&fit=crop&auto=format&q=80"
+                                                alt="Diamond Ring">
+                                        </div>
+                                        <div class="product-details">
+                                            <h4>Solitaire Diamond Ring</h4>
+                                            <p>Quantity: 1 | Size: 7</p>
+                                        </div>
+                                        <div class="product-price">
+                                            $899.00
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="order-footer-enhanced">
+                                    <div class="shipping-info">
+                                        <i class="feather-truck"></i>
+                                        <span>Delivered to: Beverly Hills, CA</span>
+                                    </div>
+                                    <div class="order-actions">
+                                        <button class="btn btn-outline btn-sm">View Details</button>
+                                        <button class="btn btn-primary btn-sm">Reorder</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order Item 2 -->
+                            <div class="order-item-enhanced" data-status="processing">
+                                <div class="order-header-enhanced">
+                                    <div class="order-info">
+                                        <div class="order-id-badge">
+                                            <span class="order-id">#ORD-2024-002</span>
+                                            <span class="order-date">Jan 18, 2024</span>
+                                        </div>
+                                        <div class="order-status processing">
+                                            <i class="feather-package"></i> Processing
+                                        </div>
+                                    </div>
+                                    <div class="order-total">
+                                        <span class="total-amount">$450.00</span>
+                                        <span class="items-count">1 item</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-products-enhanced">
+                                    <div class="product-item">
+                                        <div class="product-image">
+                                            <img src="https://plus.unsplash.com/premium_photo-1739548338201-4c337ce176d2?w=100&h=100&fit=crop&auto=format&q=80"
+                                                alt="Pearl Earrings">
+                                        </div>
+                                        <div class="product-details">
+                                            <h4>Pearl Drop Earrings</h4>
+                                            <p>Quantity: 1 | Color: White</p>
+                                        </div>
+                                        <div class="product-price">
+                                            $450.00
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="order-footer-enhanced">
+                                    <div class="shipping-info">
+                                        <i class="feather-clock"></i>
+                                        <span>Estimated delivery: Jan 22, 2024</span>
+                                    </div>
+                                    <div class="order-actions">
+                                        <button class="btn btn-outline btn-sm">Track Order</button>
+                                        <button class="btn btn-outline btn-sm">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order Item 3 -->
+                            <div class="order-item-enhanced" data-status="pending">
+                                <div class="order-header-enhanced">
+                                    <div class="order-info">
+                                        <div class="order-id-badge">
+                                            <span class="order-id">#ORD-2024-003</span>
+                                            <span class="order-date">Jan 20, 2024</span>
+                                        </div>
+                                        <div class="order-status pending">
+                                            <i class="feather-clock"></i> Pending
+                                        </div>
+                                    </div>
+                                    <div class="order-total">
+                                        <span class="total-amount">$1,299.00</span>
+                                        <span class="items-count">1 item</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-products-enhanced">
+                                    <div class="product-item">
+                                        <div class="product-image">
+                                            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=100&h=100&fit=crop&auto=format&q=80"
+                                                alt="Diamond Ring">
+                                        </div>
+                                        <div class="product-details">
+                                            <h4>Solitaire Diamond Ring</h4>
+                                            <p>Quantity: 1 | Size: 8</p>
+                                        </div>
+                                        <div class="product-price">
+                                            $1,299.00
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="order-footer-enhanced">
+                                    <div class="shipping-info">
+                                        <i class="feather-alert-circle"></i>
+                                        <span>Awaiting payment confirmation</span>
+                                    </div>
+                                    <div class="order-actions">
+                                        <button class="btn btn-primary btn-sm">Pay Now</button>
+                                        <button class="btn btn-outline btn-sm">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="orders-pagination">
+                            <button class="pagination-btn" disabled>
+                                <i class="feather-chevron-left"></i>
+                            </button>
+                            <div class="pagination-info">
+                                <span>Showing 1-3 of 12 orders</span>
+                            </div>
+                            <button class="pagination-btn">
+                                <i class="feather-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -233,7 +424,7 @@
                         <p class="page-subtitle">Items you've saved for later</p>
 
                         <div class="wishlist-grid" id="wishlistGrid"
-                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-md);">
                             <!-- Wishlist Item 1 -->
                             <div class="product-card"
                                 style="border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);">

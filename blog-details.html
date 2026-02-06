@@ -97,7 +97,8 @@
 
     <section class="section related-posts-section" style="background: var(--bg-light);">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Related Posts</h2>
+            <h2 class="section-title" data-aos="fade-up" style="text-align: center; display: block; width: 100%;">
+                Related Posts</h2>
             <div class="blog-grid" id="relatedPosts"
                 style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
                 <!-- Related posts will be loaded here -->
@@ -140,12 +141,12 @@
                 <div class="blog-featured-image" style="max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 2rem; overflow: hidden;">
                     <img src="${blogImages[post.id] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop'}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <div class="blog-meta" style="display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem; color: var(--text-light);">
+                <div class="blog-meta" style="display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem; color: var(--text-light); justify-content: center;">
                     <span><i class="feather-calendar"></i> ${new Date(post.date).toLocaleDateString()}</span>
                     <span><i class="feather-user"></i> ${post.author}</span>
                     <span><i class="feather-tag"></i> ${post.category}</span>
                 </div>
-                <h1 class="blog-title" style="font-size: 3rem; margin-bottom: 1.5rem;">${post.title}</h1>
+                <h1 class="blog-title" style="font-size: 3rem; margin-bottom: 1.5rem; text-align: center;">${post.title}</h1>
                 <div class="blog-content" style="max-width: 800px; width: 100%; margin: 0 auto;">
                     <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">${post.excerpt}</p>
                     <div style="line-height: 1.8; color: var(--text-secondary);">

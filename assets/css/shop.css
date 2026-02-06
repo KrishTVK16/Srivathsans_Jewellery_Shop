@@ -732,3 +732,39 @@
         width: 100%;
     }
 }
+
+/* Product Card Image Sizing Fix - Shop Page */
+.product-card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-image {
+    transform: scale(1.05);
+}
+
+/* NUCLEAR OPTION: Force Product Image Sizing */
+.shop-layout .product-card .product-card-image-wrapper,
+.products-grid .product-card .product-card-image-wrapper {
+    aspect-ratio: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+
+.shop-layout .product-card .product-card-image,
+.products-grid .product-card .product-card-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}

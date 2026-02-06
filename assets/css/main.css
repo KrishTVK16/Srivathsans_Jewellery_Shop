@@ -1086,14 +1086,14 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         gap: 0.5rem;
         justify-content: space-between;
     }
-    
+
     /* Group icons and toggle together on mobile */
     .navbar-actions {
         gap: 0.4rem !important;
         margin-right: 0.25rem !important;
     }
-    
-    .navbar-actions + .mobile-menu-toggle {
+
+    .navbar-actions+.mobile-menu-toggle {
         margin-left: 0.25rem !important;
     }
 
@@ -1151,18 +1151,18 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         margin-right: 0.25rem !important;
         order: 2;
     }
-    
+
     /* Group actions and toggle together */
-    .navbar-actions + .mobile-menu-toggle {
+    .navbar-actions+.mobile-menu-toggle {
         margin-left: 0.25rem !important;
         order: 3;
     }
-    
+
     /* Ensure brand stays on left */
     .navbar-brand {
         order: 1;
     }
-    
+
     /* Hide menu and ensure it doesn't take space - but allow active state to show */
     .navbar-menu {
         display: none !important;
@@ -1172,7 +1172,7 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         padding: 0 !important;
         flex: 0 0 0 !important;
     }
-    
+
     /* When menu is active, override hidden state and show it */
     .navbar-menu.active {
         display: flex !important;
@@ -1193,11 +1193,11 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         box-shadow: var(--shadow-xl) !important;
         flex: 1 1 auto !important;
     }
-    
+
     [data-theme="dark"] .navbar-menu.active {
         background: var(--dark-bg) !important;
     }
-    
+
     /* Ensure navbar content uses space-between to push icons+toggle to right */
     .navbar-content {
         justify-content: space-between !important;
@@ -1223,11 +1223,11 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         z-index: 1005 !important;
         order: 3;
     }
-    
+
     .navbar-brand {
         order: 1;
     }
-    
+
     .navbar-menu {
         order: 0;
     }
@@ -1745,7 +1745,7 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         flex-shrink: 0 !important;
         order: 2 !important;
     }
-    
+
     /* Ensure all icons in navbar-actions are properly aligned - contact page included */
     .navbar-actions .icon-btn,
     .navbar-actions #themeToggle,
@@ -1759,23 +1759,23 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         margin: 0 !important;
         flex-shrink: 0 !important;
     }
-    
+
     /* Group actions and toggle together - reduce gap between them */
-    .navbar-actions + .mobile-menu-toggle {
+    .navbar-actions+.mobile-menu-toggle {
         margin-left: 0.25rem !important;
         order: 3 !important;
     }
-    
+
     /* Ensure brand stays on left */
     .navbar-brand {
         order: 1 !important;
     }
-    
+
     /* Ensure navbar content layout */
     .navbar-content {
         justify-content: space-between !important;
     }
-    
+
     /* Hide menu and ensure it doesn't take space - but allow active state to show */
     .navbar-menu {
         display: none !important;
@@ -1785,7 +1785,7 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         padding: 0 !important;
         flex: 0 0 0 !important;
     }
-    
+
     /* When menu is active, override hidden state and show it */
     .navbar-menu.active {
         display: flex !important;
@@ -1806,16 +1806,16 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         box-shadow: var(--shadow-xl) !important;
         flex: 1 1 auto !important;
     }
-    
+
     [data-theme="dark"] .navbar-menu.active {
         background: var(--dark-bg) !important;
     }
-    
+
     /* Ensure proper spacing - icons and toggle grouped on right */
     .navbar-content {
         justify-content: space-between !important;
     }
-    
+
     /* Reduce gap between individual icons */
     .navbar-actions .icon-btn {
         margin: 0 !important;
@@ -1836,11 +1836,11 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         z-index: 1005 !important;
         order: 3;
     }
-    
+
     .navbar-brand {
         order: 1;
     }
-    
+
     .navbar-menu {
         order: 0;
     }
@@ -2463,13 +2463,24 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     flex-wrap: wrap;
 }
 
+/* Ensure equal button widths on desktop */
+.hero-actions .btn {
+    min-width: 200px;
+    justify-content: center;
+}
+
 .hero-actions .btn-primary {
     color: #ffffff !important;
+    border: 2px solid transparent;
+    /* Match outline button height/box-model */
+    box-sizing: border-box;
+    /* Ensure border is included */
 }
 
 .hero-actions .btn-outline {
     color: #ffffff !important;
     border-color: #ffffff !important;
+    box-sizing: border-box;
 }
 
 .hero-actions .btn-outline:hover {
@@ -2524,8 +2535,14 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         align-items: stretch;
     }
 
-    .hero-actions .btn {
-        width: 100%;
+    .hero-actions .btn,
+    .hero-actions a.btn {
+        width: 100% !important;
+        max-width: none !important;
+        display: flex !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
 
@@ -3435,6 +3452,7 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
 }
 
 @media (max-width: 768px) {
+
     /* Trending carousel - show one card at a time on mobile */
     #trendingCarousel .carousel-item {
         flex: 0 0 100% !important;
@@ -4300,7 +4318,7 @@ img {
         overflow: visible;
         justify-content: space-between;
     }
-    
+
     /* Global navbar icon grouping for tablet - applies to ALL pages */
     .navbar-actions {
         display: flex !important;
@@ -4310,22 +4328,22 @@ img {
         flex-shrink: 0;
         order: 2;
     }
-    
+
     .mobile-menu-toggle {
         margin-left: 0.25rem !important;
         order: 3;
     }
-    
+
     /* Group actions and toggle together */
-    .navbar-actions + .mobile-menu-toggle {
+    .navbar-actions+.mobile-menu-toggle {
         margin-left: 0.25rem !important;
     }
-    
+
     /* Ensure brand stays on left */
     .navbar-brand {
         order: 1;
     }
-    
+
     /* Hide menu and ensure it doesn't take space - but allow active state to show */
     .navbar-menu {
         display: none !important;
@@ -4335,7 +4353,7 @@ img {
         padding: 0 !important;
         flex: 0 0 0 !important;
     }
-    
+
     /* When menu is active, override hidden state and show it */
     .navbar-menu.active {
         display: flex !important;
@@ -4355,11 +4373,11 @@ img {
         margin: 0 !important;
         box-shadow: var(--shadow-xl) !important;
     }
-    
+
     [data-theme="dark"] .navbar-menu.active {
         background: var(--dark-bg) !important;
     }
-    
+
     /* Ensure icons and toggle are grouped on right */
     .navbar-content {
         justify-content: space-between !important;
@@ -4422,7 +4440,7 @@ img {
         align-items: center !important;
         order: 2 !important;
     }
-    
+
     /* Ensure all icons in navbar-actions are properly aligned - contact page included */
     .navbar-actions .icon-btn,
     .navbar-actions #themeToggle,
@@ -4436,16 +4454,16 @@ img {
         margin: 0 !important;
         flex-shrink: 0 !important;
     }
-    
-    .navbar-actions + .mobile-menu-toggle {
+
+    .navbar-actions+.mobile-menu-toggle {
         margin-left: 0.25rem !important;
         order: 3 !important;
     }
-    
+
     .navbar-brand {
         order: 1 !important;
     }
-    
+
     .navbar-content {
         justify-content: space-between !important;
     }
@@ -5555,4 +5573,39 @@ img {
         max-width: 100%;
         box-sizing: border-box;
     }
+}
+/* Product Card Image Sizing Fix */
+.product-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1; /* Force square aspect ratio */
+    overflow: hidden;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fill the container, cropping if necessary */
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-image {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+/* NUCLEAR OPTION: Force Product Image Sizing */
+.shop-layout .product-card .product-card-image-wrapper,
+.products-grid .product-card .product-card-image-wrapper {
+    aspect-ratio: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+
+.shop-layout .product-card .product-card-image,
+.products-grid .product-card .product-card-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
 }

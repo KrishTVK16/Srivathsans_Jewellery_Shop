@@ -636,7 +636,7 @@ function loadUserOrders() {
 
         if (filteredOrders.length === 0) {
             ordersList.innerHTML = `
-                <div style="text-align: center; padding: 3rem;">
+                <div style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
                     <i class="feather-shopping-bag" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
                     <h3>No orders found</h3>
                     <p style="color: var(--text-secondary);">You haven't placed any orders yet.</p>
@@ -646,58 +646,12 @@ function loadUserOrders() {
             return;
         }
 
-        ordersList.innerHTML = filteredOrders.map(order => {
-            const statusClass = order.status;
-            const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
-            const date = new Date(order.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-
-            const productsHtml = order.products.map(product => `
-                <div class="order-product-item" style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: 0.5rem;">
-                    <div class="order-product-image" style="width: 50px; height: 50px; min-width: 50px; background: #f5f5f5; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
-                        ${product.image
-                    ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">`
-                    : `<i class="feather-package" style="color: var(--text-light); width: 24px; height: 24px;"></i>`
-                }
-                    </div>
-                    <div class="order-product-info">
-                        <p class="order-product-name" style="margin: 0; font-weight: 500;">${product.name}</p>
-                        <p class="order-product-price" style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            return `
-                <div class="order-item" style="background: var(--white); border-radius: var(--radius-md); padding: var(--spacing-md); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-md);">
-                    <div class="order-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
-                        <div>
-                            <h3 class="order-id" style="margin: 0; font-size: 1.1rem;">${order.id}</h3>
-                            <span class="order-date" style="color: var(--text-secondary); font-size: 0.85rem;">Placed on ${date}</span>
-                        </div>
-                        <span class="status-badge ${statusClass}">${statusText}</span>
-                    </div>
-                    
-                    <div class="order-products" style="margin-bottom: var(--spacing-md);">
-                        ${productsHtml}
-                    </div>
-                    
-                    <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color);">
-                        <div class="order-total">
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Total:</span>
-                            <strong style="font-size: 1.1rem; color: var(--primary-color);">$${order.total.toFixed(2)}</strong>
-                        </div>
-                        <div class="order-actions" style="display: flex; gap: var(--spacing-sm);">
-                            <button class="btn btn-outline" style="padding: 0.5rem 1rem;" onclick="viewOrder('${order.id}')">View Details</button>
-                            ${order.status === 'delivered' ? '<button class="btn btn-primary" style="padding: 0.5rem 1rem;">Write Review</button>' : ''}
-                            ${order.status === 'pending' || order.status === 'processing' ? '<button class="btn btn-outline" style="padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);">Cancel Order</button>' : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
+        // Use createOrderCard for consistent design
+        if (typeof createOrderCard === 'function') {
+            ordersList.innerHTML = filteredOrders.map(order => createOrderCard(order)).join('');
+        } else {
+            console.error('createOrderCard function not found');
+        }
 
         // Re-initialize Feather Icons
         if (typeof feather !== 'undefined') {
@@ -743,6 +697,7 @@ function loadReviews() {
 }
 
 // Helper to create order card HTML (reusable)
+// Helper to create order card HTML (reusable)
 function createOrderCard(order, isCompact = false) {
     const statusClass = order.status;
     const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
@@ -753,43 +708,42 @@ function createOrderCard(order, isCompact = false) {
     });
 
     const productsHtml = order.products.map(product => `
-        <div class="order-product-item" style="display: flex; gap: var(--spacing-md); align-items: center; margin-bottom: 0.5rem;">
-            <div class="order-product-image" style="width: 50px; height: 50px; min-width: 50px; background: #f5f5f5; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+        <div class="product-summary-item" style="display: flex; gap: 1rem; align-items: center; padding: 0.5rem; background: var(--bg-light); border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+            <div class="product-thumb" style="width: 40px; height: 40px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0;">
                 ${product.image
-            ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;">`
-            : `<i class="feather-package" style="color: var(--text-light); width: 24px; height: 24px;"></i>`
+            ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">`
+            : `<i class="feather-package" style="color: var(--text-light);"></i>`
         }
             </div>
-            <div class="order-product-info">
-                <p class="order-product-name" style="margin: 0; font-weight: 500; font-size: ${isCompact ? '0.9rem' : '1rem'}">${product.name}</p>
-                <p class="order-product-price" style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
+            <div class="product-info-compact" style="flex: 1; text-align: left;">
+                <p style="margin: 0; font-size: 0.9rem; font-weight: 500; color: var(--text-primary); line-height: 1.2;">${product.name}</p>
+                <p style="margin: 0; font-size: 0.8rem; color: var(--text-secondary);">Qty: ${product.quantity} • $${product.price.toFixed(2)}</p>
             </div>
         </div>
     `).join('');
 
     return `
-        <div class="order-item" style="background: var(--white); border-radius: var(--radius-md); padding: var(--spacing-md); box-shadow: var(--shadow-sm); margin-bottom: var(--spacing-md);">
-            <div class="order-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
-                <div>
-                    <h3 class="order-id" style="margin: 0; font-size: 1.1rem;">${order.id}</h3>
-                    <span class="order-date" style="color: var(--text-secondary); font-size: 0.85rem;">Placed on ${date}</span>
-                </div>
-                <span class="status-badge ${statusClass}">${statusText}</span>
+        <div class="order-item centered-card" style="background: var(--white); border-radius: var(--radius-lg); padding: var(--spacing-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%;">
+            <div class="order-header-centered" style="margin-bottom: var(--spacing-md); width: 100%;">
+                <h3 class="order-id" style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--primary-color);">${order.id}</h3>
+                <span class="order-date" style="display: block; color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.75rem;">Placed on ${date}</span>
+                <span class="status-badge ${statusClass}" style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${statusText}</span>
             </div>
             
-            <div class="order-products" style="margin-bottom: var(--spacing-md);">
+            <div class="order-products-list" style="width: 100%; margin-bottom: var(--spacing-md); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
                 ${productsHtml}
             </div>
             
-            <div class="order-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--spacing-sm); border-top: 1px solid var(--border-color);">
-                <div class="order-total">
-                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Total:</span>
-                    <strong style="font-size: 1.1rem; color: var(--primary-color);">$${order.total.toFixed(2)}</strong>
+            <div class="order-footer-centered" style="width: 100%; margin-top: auto;">
+                <div class="total-row" style="margin-bottom: 1rem;">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 600;">Total:</span>
+                    <strong style="font-size: 1.2rem; color: var(--primary-color); margin-left: 0.5rem;">$${order.total.toFixed(2)}</strong>
                 </div>
-                <div class="order-actions" style="display: flex; gap: var(--spacing-sm);">
-                    <button class="btn btn-outline" style="padding: 0.5rem 1rem;" onclick="viewOrder('${order.id}')">View Details</button>
-                    ${order.status === 'delivered' ? '<button class="btn btn-primary" style="padding: 0.5rem 1rem;">Write Review</button>' : ''}
-                    ${order.status === 'pending' || order.status === 'processing' ? '<button class="btn btn-outline" style="padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);">Cancel Order</button>' : ''}
+                <div class="action-buttons" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
+                    <button class="btn btn-outline" style="width: 100%; padding: 0.5rem 1rem; color: var(--text-primary); border-color: var(--primary-color);" onclick="viewOrder('${order.id}')">View Details</button>
+                    ${order.status === 'pending' || order.status === 'processing'
+            ? `<button class="btn btn-outline" style="width: 100%; padding: 0.5rem 1rem; color: var(--error); border-color: var(--error);" onclick="alert('Cancel order ${order.id}')">Cancel Order</button>`
+            : ''}
                 </div>
             </div>
         </div>
